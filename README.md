@@ -104,13 +104,13 @@ _If you are the publisher and think this repository should not be public, just w
 
 * Unlike constructors, they have names
 * Unlike constructors, they are not required to create a new object each time they're invoked. Such classes have control over the instances created. Allow a class to guarantee that it is singleton, or non instantiable. Used by Boolean.valueOf as it never creates an object!
-* Unlike constructors, they can return an object of any subtype of their return type
-* They reduce verbosity of creating parameterized type instances
+* Unlike constructors, they can return an object of any subtype of their return type. Good practise as one should always work with abstraction, rather than concrete types.
+* Class of returned object can vary from call to call as a function of input parameters. EnumSet class has only static factories. If Enum provided to the of factory method has 65 elements return one set else return another. The subclasses are hidden from user. Factories only return superclass. 
 
 **_DISADVANTAGES_**
 
 * If providing only static factory methods, classes without public or protected constructors cannot be subclassed (encourage to use composition instead inheritance).
-* They are not readily distinguishable from other static methods (Some common names (each with a different pourpose) are: valueOf, of, getInstance, newInstance, getType and newType)
+* They are not readily distinguishable from other static methods (Some common names (each with a different pourpose) are: valueOf, of, getInstance(may return same instance), newInstance/create(return new instance always), getType and newType)
 
 ```java
 
